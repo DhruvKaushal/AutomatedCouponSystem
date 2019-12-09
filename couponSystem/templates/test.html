@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-  <h1>You are now logged in!</h1>
-  {% if user.is_authentic and user.username == "Administrator" %}
-    <h2><a href="{% url 'profiles:adminKaLogin '%}">Go to your homepage, Admin</a></h2> 
-  {% else %}
-    <h2><a href="{% url 'profiles:userLogin '%}">Go to your homepage, @{{ user.username }}</a></h2>
-  {% endif %}
-</div>
+    <h1>You are now logged in!</h1>
+    {% if user.username == Dhruv %}
+        <h2><a href="{% url 'profiles:adminHome'%}">Go to Home Page</a></h2>
+    {% else %}
+        <h2><a href="{% url 'profiles:userHome'%}">Go to Home Page</a></h2>
+    {% endif %}
+  </div>
+  
 {% endblock %}

@@ -9,3 +9,7 @@ def adminKaPage(request):
     model = userData
     records = model.objects.all().order_by(model.name)
     return render(request, 'profiles/adminKaLogin.html')
+
+
+def userKaLog(request):
+    return render(request, 'profiles/userLogin.html')
