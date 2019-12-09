@@ -4,5 +4,29 @@
 {% block content %}
 <div class="container">
   <h1>Welcome to your page, Admin</h1>
+  {% if model %}
+  <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Balance</th>
+          <th>Date of Transaction</th>
+          <th>vendor_number</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for person in persons %}
+        <tr>
+            <td>{{ model.name }}</td>
+            <td>{{ model.balance }}</td>
+            <td>{{ model.date_of_payment }}</td>
+            <td>{{ model.vendor_number }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+{% else %}
+    <p>There are no active transactions!</p>
+{% endif %}
 </div>
 {% endblock %}
