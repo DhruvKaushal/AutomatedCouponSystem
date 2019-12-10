@@ -8,19 +8,19 @@
   <table>
       <thead>
         <tr>
-          <th>Username</th>
-          <th>Balance</th>
-          <th>Date of Transaction</th>
-          <th>vendor_number</th>
+          <th style = "padding: 20px;">Username</th>
+          <th style = "padding: 20px;">Balance</th>
+          <th style = "padding: 20px;">Date of Transaction</th>
+          <th style = "padding: 20px;">vendor_number</th>
         </tr>
       </thead>
       <tbody>
-      {% for person in persons %}
+      {% for i in model %}
         <tr>
-            <td>{{ model.name }}</td>
-            <td>{{ model.balance }}</td>
-            <td>{{ model.date_of_payment }}</td>
-            <td>{{ model.vendor_number }}</td>
+            <td style="text-align: center;">{{ i.name }}</td>
+            <td style="text-align: center;">{{ i.balance }}</td>
+            <td style="text-align: center;">{{ i.date_of_payment }}</td>
+            <td style="text-align: center;">{{ i.vendor_number }}</td>
         </tr>
       {% endfor %}
       </tbody>
