@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import(
 )
 # from django.forms.models import model_to_dict
 from .models import userData
+from . import forms
 # Create your views here.
 def adminKaPage(request):
     records = userData.objects.all()
