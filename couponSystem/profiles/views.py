@@ -26,6 +26,6 @@ def userKaLog(request):
         print(choice)
         records = userData.objects.get(Vendor_number = ('choice')).aggregate(Sum('itemPrice'))
         args = {'form': form, 'choice': choice, 'model':records}
-        return render(request, 'profiles/useLogin.html', args)
+        return render(request, 'profiles/useLogin.html', {'args': args})
     else:
         return render(request, 'profiles/userLogin.html', {'form': form})

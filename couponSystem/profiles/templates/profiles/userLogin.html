@@ -15,8 +15,11 @@
         <button type="submit" class="btn btn-primary">Check Balance</button>
         {% endbuttons %}
     </form>
+    {% if args.model %}
     <h4>You need to pay Rs {{ args.model }} to vendor {{ args.choice }}</h4>
-    {{ args }}
+    {% else %}
+    <h4>No outstanding payment!</h4>
+    {% endif %}
 </div>
 
 {% endblock %}
