@@ -24,7 +24,7 @@ def userKaLog(request):
     if request.method=="POST" and form.is_valid():
         choice = form.cleaned_data['Vendor_choices']
         print(choice)
-        records = userData.objects.filter(Vendor_number = ('choice')).aggregate(Sum('itemPrice'))
+        records = userData.objects.get(Vendor_number = ('choice')).aggregate(Sum('itemPrice'))
         args = {'form': form, 'choice': choice, 'model':records}
         return render(request, 'profiles/useLogin.html', args)
     else:
