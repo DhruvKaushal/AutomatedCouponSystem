@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import(
 )
 from .forms import select_vendor_form
 from django.db.models import Sum
+from django.contrib.auth.models import User
 
 # from django.forms.models import model_to_dict
 from .models import userData
@@ -15,9 +16,6 @@ def adminKaPage(request):
     return render(request, 'profiles/adminKaLogin.html',{'model':records})
 
 
-# def userKaLog(request):
-#     form  = select_vendor_form()
-#     return render(request, 'profiles/userLogin.html', {'form': form})
 
 def userKaLog(request):
   form = select_vendor_form()
@@ -27,9 +25,9 @@ def userKaLog(request):
     form = select_vendor_form(request.POST)
     if form.is_valid():
       choice = form.cleaned_data['Vendor_choices']
-      records = userData.objects.get(Vendor_number = ('choice')).aggregate(Sum('balance'))
+      records = userData.objects.get(vendor_number = choice, name=User.username)
       args = {'form': form, 'choice': choice, 'model':records}
-      return render(request, 'profiles/useLogin.html', args)
+      return render(request, 'profiles/userLogin.html', args)
 
   # Return the normal results, form will display an error message if POST was triggered
   return render(request, 'profiles/userLogin.html', {'form': form})
