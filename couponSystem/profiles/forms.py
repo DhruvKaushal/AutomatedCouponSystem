@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 
 vendor_choices = [
-    ('1','Vendor 1'),('2',"Vendor 2"), ("3", "Vendor 3"),
+    ('1','Vendor 1'),('2',"Vendor 2"),
 ]    
 
 class select_vendor_form(forms.Form):

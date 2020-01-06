@@ -25,8 +25,8 @@ def userKaLog(request):
     form = select_vendor_form(request.POST)
     if form.is_valid():
       choice = form.cleaned_data['Vendor_choices']
-      records = userData.objects.get(vendor_number = choice, name=User.username)
-      args = {'form': form, 'choice': choice, 'model':records}
+      records = userData.objects.filter(vendor_number = choice, name = User.username)
+      args = {'form': form, 'choice': choice, 'model': records}
       return render(request, 'profiles/userLogin.html', args)
 
   # Return the normal results, form will display an error message if POST was triggered

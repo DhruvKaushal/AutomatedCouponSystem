@@ -4,14 +4,38 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div class="container">
-  <h1>Login</h1>
-  <form method="POST" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-primary">Login</button>
-    {% endbuttons %}
-  </form>
+<link rel="stylesheet" href="">
+<br>
+<br>
+<br>
+<div class="container h-100" style="margin:auto, height:200px, width: 150px, border:3px groove black">
+	<div class="d-flex justify-content-center h-100" style="justify-content:center" >
+		<div class="user_card">
+			<div class="d-flex justify-content-center">
+				<div class="brand_logo_container">
+					<img src="http://www.clipartpanda.com/clipart_images/user-66327738/download" class="brand_logo" alt="Logo" style="width:50px">
+				</div>
+			</div>
+			
+			 <div class="container">
+				 <h3 style="text-align:center">Member Login</h1>
+ 			 	<form method="POST" class="form">
+			 	{% csrf_token %}
+     				{% bootstrap_form form %}
+     				{% buttons %}
+       				<button type="submit" class="btn btn-primary container d-flex justify-content-center" >Login</button>
+     				{% endbuttons %}
+   				</form>
+ 			 </div>
+						
+	
+			<div class="mt-4">
+				<div class="d-flex justify-content-center links">
+					Don't have an account? <a href="{% url 'accounts:signup' %}" class="ml-2">Sign Up</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 {% endblock %}
