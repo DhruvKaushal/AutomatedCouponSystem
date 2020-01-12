@@ -8,21 +8,27 @@
     <br>
     <h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;">Welcome to your home page, {{ user.username }}!</h1>
     <br>
-    <h3>Select vendor to check your balance!</h3>
+    {% if y %}
+        <h3>Balance amount is {{ y.balance }}</h3>
+    {% endif %}
+    <h3>Select vendor to pay!</h3>
     <br>
     
-    <form method="POST" class="form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-        <button type="submit" class="btn btn-primary">Check Balance</button>
-        {% endbuttons %}
+    <form method="POST" action="/profiles/updatingBalance">
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" value="1" id="defaultUnchecked" name="defaultRadios">
+            <label class="custom-control-label" for="defaultUnchecked">Vendor 1</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" value="2" id="defaultUnchecked" name="defaultRadios">
+            <label class="custom-control-label" for="defaultUnchecked">Vendor 2</label>
+        </div>  
+        <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount">
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
-    {% if args.model %}
-    <h4>You need to pay Rs {{ args.model }} to vendor {{ args.choice }}</h4>
-    {% else %}
-    <h4>No outstanding payment!</h4>
-    {% endif %}
+    
 </div>
 
 {% endblock %}
