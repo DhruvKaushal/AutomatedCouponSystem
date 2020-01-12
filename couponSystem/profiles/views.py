@@ -4,7 +4,6 @@ from django.contrib.auth.mixins import(
     PermissionRequiredMixin
 )
 #from .forms import select_vendor_form
-from django.db.models import Sum
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
@@ -25,7 +24,8 @@ def updatingBalance(request):
         p = transaction(vendor_id =ven_id.value, emp_id = request.User.id, debit=amount, credit=0)
         p.save()
         y = employee.objects.filter(id = request.User.id)
-        return render(request, 'profiles/userLogin.html', y)
+        return render(request, 'profiles/userLogin.html', {'model':y})
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
