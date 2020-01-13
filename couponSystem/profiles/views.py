@@ -25,7 +25,8 @@ def updatingBalance(request):
         w = employee.objects.get(id=x.id)
         transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
         y = employee.objects.get(name = request.user)
-        return render(request, 'profiles/userLogin.html', {'model':y})
+        print(y.balance)
+        return render(request, 'profiles/userLogin.html', {'model':employee})
     return render(request, 'profiles/userLogin.html')
 
 

@@ -6,8 +6,8 @@
     <br>
     <h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;">Welcome to your home page, {{ user.username }}!</h1>
     <br>
-    {% if y %}
-        <h3>Balance amount is {{ y.balance }}</h3>
+    {% if model %}
+        <h3>Balance amount is {{ model.balance }}</h3>
     {% endif %}
     <h3>Select vendor to pay!</h3>
     <br>
