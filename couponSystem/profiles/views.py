@@ -17,16 +17,16 @@ def adminKaPage(request):
 
 def updatingBalance(request):
     if request.method=="POST":
-        ven_id = request.POST["defaultRadios"]
+        ven_id = request.POST["groupOfDefaultRadios"]
         amount = request.POST["amt"]
-        x = employee.objects.filter(id = request.User.id)
-        x.balance = x.balance - amount
-        p = transaction(vendor_id =ven_id.value, emp_id = request.User.id, debit=amount, credit=0)
-        p.save()
-        y = employee.objects.filter(id = request.User.id)
+        x = employee.objects.get(name = request.user)
+        x.balance = x.balance - int(amount)
+        v = vendor.objects.get(id=ven_id)
+        w = employee.objects.get(id=x.id)
+        transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
+        y = employee.objects.get(name = request.user)
         return render(request, 'profiles/userLogin.html', {'model':y})
-
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    return render(request, 'profiles/userLogin.html')
 
 
 

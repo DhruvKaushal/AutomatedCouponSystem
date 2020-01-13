@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% load bootstrap4 %}
-
 {% block content %}
 <div class="container">
     <br>
@@ -14,21 +12,20 @@
     <h3>Select vendor to pay!</h3>
     <br>
     
-    <form method="POST" action="/profiles/updatingBalance">
+    <form method="POST" action="/profiles/userLogin/">
         <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" value="1" id="defaultUnchecked" name="defaultRadios">
-            <label class="custom-control-label" for="defaultUnchecked">Vendor 1</label>
-        </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" value="2" id="defaultUnchecked" name="defaultRadios">
-            <label class="custom-control-label" for="defaultUnchecked">Vendor 2</label>
-        </div>  
+              <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios" value="1">
+              <label class="custom-control-label" for="defaultGroupExample1">Vendor 1</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" value="2">
+              <label class="custom-control-label" for="defaultGroupExample2">Vendor 2</label>
+            </div> 
         <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount">
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
 
-    </form>
-    
+    </form> 
 </div>
-
 {% endblock %}
