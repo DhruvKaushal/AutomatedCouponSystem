@@ -21,6 +21,7 @@ def updatingBalance(request):
         amount = request.POST["amt"]
         x = employee.objects.get(name = request.user)
         x.balance = x.balance - int(amount)
+        x.save()
         v = vendor.objects.get(id=ven_id)
         w = employee.objects.get(id=x.id)
         transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
