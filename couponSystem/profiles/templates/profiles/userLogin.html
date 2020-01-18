@@ -1,20 +1,11 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
-<script>
-    function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-    x.style.display = "none";
-  }
-}
-</script>
-<div class="container">
-    <br>
+
     <br>
     <h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;">Welcome to your home page, {{ user.username }}!</h1>
+    <br>
+<div class="container" style="text-align: center; display: inline-block; width:75%; background-color: #ede4d5; border-radius: 10px;margin:auto; align-self: center;" >
     <br>
     {% if model %}
         <h3>Balance amount is {{ model.balance }}</h3>
@@ -32,15 +23,59 @@
               <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" value="2">
               <label class="custom-control-label" for="defaultGroupExample2">Vendor 2</label>
             </div> 
-        <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount">
+        <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount"style="width: 25%;margin: 0 auto">
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        
-        <button onclick="myFunction()">Click Me</button>
-        <div id="myDIV">
-            This is my DIV element.
-        </div>
-
+        <button type="submit" class="btn btn-primary" name="form1">Submit</button>
+        <br>     
     </form> 
 </div>
+<br>
+<br>
+<div style="text-align: center; display: inline-block; width:75%; background-color: #ede4d5; border-radius: 10px;margin:auto; align-self: center;">
+    <br>
+    <h3>Want to see your transactions? Choose from options below!</h3>
+    <form method="POST" action="/profiles/userLogin/">
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios1" value="1">
+            <label class="custom-control-label" for="defaultGroupExamples1">1 month</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios1" value="2">
+            <label class="custom-control-label" for="defaultGroupExamples2">2 months</label>
+        </div> 
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios1" value="3">
+            <label class="custom-control-label" for="defaultGroupExamples3">6 months</label>
+        </div> 
+        {% if model %}
+    <table>
+        <thead>
+            <tr>
+                <th style = "padding: 20px;">Vendor ID</th>
+                <th style = "padding: 20px;">Employee ID</th>
+                <th style = "padding: 20px;">Debit</th>
+                <th style = "padding: 20px;">Credit</th>
+                <th style = "padding: 20px;">Time of transaction</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in model %}
+            <tr>
+                <td style="text-align: center;">{{ i.vendor_id }}</td>
+                <td style="text-align: center;">{{ i.emp_id }}</td>
+                <td style="text-align: center;">{{ i.debit }}</td>
+                <td style="text-align: center;">{{ i.credit }}</td>
+                <td style="text-align: center;">{{ i.timestamp }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>There are no active transactions!</p>
+    {% endif %}
+    <button type="submit" class="btn btn-info" name="form2">Get records</button>
+    </form>   
+</div>
+
 {% endblock %}

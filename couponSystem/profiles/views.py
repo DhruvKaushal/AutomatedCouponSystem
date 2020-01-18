@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import(
 #from .forms import select_vendor_form
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+import datetime
 
 # from django.forms.models import model_to_dict
 from .models import vendor, employee, transaction
@@ -17,17 +18,29 @@ def adminKaPage(request):
 
 def updatingBalance(request):
     if request.method=="POST":
-        ven_id = request.POST["groupOfDefaultRadios"]
-        amount = request.POST["amt"]
-        x = employee.objects.get(name = request.user)
-        x.balance = x.balance - int(amount)
-        x.save()
-        v = vendor.objects.get(id=ven_id)
-        w = employee.objects.get(id=x.id)
-        transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
-        y = employee.objects.get(name = request.user)
-        print(y.balance)
-        return render(request, 'profiles/userLogin.html', {'model':y})
+        if 'form1' in request.POST:
+            ven_id = request.POST["groupOfDefaultRadios"]
+            amount = request.POST["amt"]
+            x = employee.objects.get(name = request.user)
+            x.balance = x.balance - int(amount)
+            x.save()
+            v = vendor.objects.get(id=ven_id)
+            w = employee.objects.get(id=x.id)
+            transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
+            y = employee.objects.get(name = request.user)
+            return render(request, 'profiles/userLogin.html', {'model':y})
+
+        if 'form2' in request.POST:
+            date_id = request.POST["groupOfDefaultRadios1"]
+            x = employee.objects.get(name = request.user)
+            if date_id == 1:
+                d = transaction.objects.get(emp_id = x, timestamp = datetime.date.today-timestamp(days=30))
+            elif date_id == 2:
+                d = transaction.objects.get(emp_id = x, timestamp = datetime.date.today-timestamp(days=60))
+            else:
+                d = transaction.objects.get(emp_id = x, timestamp = datetime.date.today-timestamp(days = 180))
+            return render(request, 'profiles/userLogin.html', {'model':d})    
+
     return render(request, 'profiles/userLogin.html')
 
 
