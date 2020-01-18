@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
+<script>
+    function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <div class="container">
     <br>
     <br>
@@ -25,6 +35,11 @@
         <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount">
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <button onclick="myFunction()">Click Me</button>
+        <div id="myDIV">
+            This is my DIV element.
+        </div>
 
     </form> 
 </div>
