@@ -23,21 +23,48 @@
         <h3> Select time period</h3>
         
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInlines1" name="inlineDefaultRadiosExample1" value="1m">
+                <input type="radio" class="custom-control-input" id="defaultInlines1" name="inlineDefaultRadiosExample1" value="1">
                 <label class="custom-control-label" for="defaultInlines1">1 Month</label>
             </div>  
             <!-- Default inline 2-->
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInlines2" name="inlineDefaultRadiosExample1" value="2m">
+                <input type="radio" class="custom-control-input" id="defaultInlines2" name="inlineDefaultRadiosExample1" value="2">
                 <label class="custom-control-label" for="defaultInlines2">2 Months</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInlines3" name="inlineDefaultRadiosExample1" value="6m">
+                <input type="radio" class="custom-control-input" id="defaultInlines3" name="inlineDefaultRadiosExample1" value="6">
                 <label class="custom-control-label" for="defaultInlines3">6 Months</label>
             </div>
             <br>
             <button type="submit" class="btn btn-primary" name="form1">Submit</button>
+            {% if model %}
+            <table>
+                <thead>
+                    <tr>
+                        <th style = "padding: 20px;">Vendor ID</th>
+                        <th style = "padding: 20px;">Employee ID</th>
+                        <th style = "padding: 20px;">Debit</th>
+                        <th style = "padding: 20px;">Credit</th>
+                        <th style = "padding: 20px;">Time of transaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in model %}
+                    <tr>
+                        <td style="text-align: center;">{{ i.vendor_id.id }}</td>
+                        <td style="text-align: center;">{{ i.emp_id.id }}</td>
+                        <td style="text-align: center;">{{ i.debit }}</td>
+                        <td style="text-align: center;">{{ i.credit }}</td>
+                        <td style="text-align: center;">{{ i.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p>There are no active transactions!</p>
+            {% endif %}
         </form>
+        
         <br>
         
     </div>
