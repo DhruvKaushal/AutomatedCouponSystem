@@ -19,10 +19,10 @@ def adminKaPage(request):
             vendor_choice = request.POST["inlineDefaultRadiosExample"]
             date_choice = request.POST["inlineDefaultRadiosExample1"]
             x = employee.objects.all()
-            y = vendor.objects.all()
+            y = vendor.objects.filter(id = vendor_choice)
             if date_choice == 1:
                 d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
-            elif date_choice == 1:
+            elif date_choice == 2:
                 d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
             else:
                 d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180))    
