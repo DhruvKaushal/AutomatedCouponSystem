@@ -13,8 +13,22 @@ from .models import vendor, employee, transaction
 #from . import forms
 # Create your views here.
 def adminKaPage(request):
-    records = transaction.objects.all()
-    return render(request, 'profiles/adminKaLogin.html',{'model':records})
+    if request.method=="POST":
+        if 'form1' in request.POST:
+            pass
+
+        if 'form2' in request.POST:
+            amount = request.POST["amt"]
+            x = employee.objects.all()
+            for i in x:
+                i.balance = i.balance + int(amount)
+                i.save()
+                print(i.id)
+                transaction.objects.create(emp_id=i,debit=0,credit=amount)
+
+            return render(request, 'profiles/adminKaLogin.html')
+
+    return render(request, 'profiles/adminKaLogin.html')
 
 def updatingBalance(request):
     if request.method=="POST":

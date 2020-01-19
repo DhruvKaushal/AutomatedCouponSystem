@@ -43,8 +43,15 @@
     </div>
     <div>
         <h3>Want to update users' balance? Click below!</h3>
-        <input type="button" name="answer" class="btn btn-primary" value="Show Div" onclick="showDiv()" />    
-        <div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
+        <input type="button" name="answer" class="btn btn-primary" value="Click here!" onclick="showDiv()"/>
+        <br>    
+        <div id="welcomeDiv"  style="display:none;" class="answer_list" >
+            <form method="POST" action="/profiles/adminKaLogin/">
+              <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount"style="width: 25%;margin: 0 auto">
+              <br>
+              <button type="submit" class="btn btn-primary" name="form2">Submit</button>
+            </form>
+        </div>
     </div>
     
 </div>
