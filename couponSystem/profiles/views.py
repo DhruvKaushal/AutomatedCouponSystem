@@ -15,17 +15,18 @@ from .models import vendor, employee, transaction
 def adminKaPage(request):
     if request.method=="POST":
         if 'form1' in request.POST:
-            vendor_choice = request.POST["inlineDefaultRadiosExample1"]
+            d={}
+            vendor_choice = request.POST["inlineDefaultRadiosExample"]
             date_choice = request.POST["inlineDefaultRadiosExample1"]
-            x = employee.objects.get(name = request.user)
-            y = vendor.objects.get(id = vendor_choice)
+            x = employee.objects.all()
+            y = vendor.objects.all()
             if date_choice == 1:
-                d = transaction.objects.filter(ven_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
+                d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
             elif date_choice == 1:
-                d = transaction.objects.filter(ven_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
+                d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
             else:
                 d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180))    
-
+            print(d)
             return render(request, 'profiles/adminKaLogin.html', {'model':d})        
 
 
