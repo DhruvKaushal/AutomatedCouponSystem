@@ -62,8 +62,8 @@
         <tbody>
         {% for i in model %}
             <tr>
-                <td style="text-align: center;">{{ i.vendor_id }}</td>
-                <td style="text-align: center;">{{ i.emp_id }}</td>
+                <td style="text-align: center;">{{ i.vendor_id.id }}</td>
+                <td style="text-align: center;">{{ i.emp_id.id }}</td>
                 <td style="text-align: center;">{{ i.debit }}</td>
                 <td style="text-align: center;">{{ i.credit }}</td>
                 <td style="text-align: center;">{{ i.timestamp }}</td>
@@ -76,6 +76,7 @@
     {% endif %}
     <button type="submit" class="btn btn-info" name="form2">Get records</button>
     </form>   
+    
 </div>
 
 {% endblock %}

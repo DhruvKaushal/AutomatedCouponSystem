@@ -45,14 +45,17 @@ def updatingBalance(request):
             return render(request, 'profiles/userLogin.html', {'model':y})
 
         if 'form2' in request.POST:
+            d = {}
             date_id = request.POST["groupOfDefaultRadios1"]
             x = employee.objects.get(name = request.user)
             if date_id == 1:
-                d = transaction.objects.get(emp_id = x, timestamp = datetime.date.today-timestamp(days=30))
+                d = transaction.objects.filter(emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
             elif date_id == 2:
-                d = transaction.objects.get(emp_id = x, timestamp = datetime.date.today-timestamp(days=60))
+                d = transaction.objects.filter(emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
             else:
-                d = transaction.objects.get(emp_id = x, timestamp = datetime.date.today-timestamp(days = 180))
+                d = transaction.objects.filter(emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180))
+                print(d)
+
             return render(request, 'profiles/userLogin.html', {'model':d})    
 
     return render(request, 'profiles/userLogin.html')
