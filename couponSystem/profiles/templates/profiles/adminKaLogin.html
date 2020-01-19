@@ -19,28 +19,38 @@
                 <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" value="2">
                 <label class="custom-control-label" for="defaultInline2">Vendor 2</label>
             </div>
-          
+        <br>  
         <h3> Select time period</h3>
         
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample1">
-                <label class="custom-control-label" for="defaultInline1">1 Month</label>
+                <input type="radio" class="custom-control-input" id="defaultInlines1" name="inlineDefaultRadiosExample1" value="1m">
+                <label class="custom-control-label" for="defaultInlines1">1 Month</label>
             </div>  
             <!-- Default inline 2-->
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample1">
-                <label class="custom-control-label" for="defaultInline2">2 Months</label>
+                <input type="radio" class="custom-control-input" id="defaultInlines2" name="inlineDefaultRadiosExample1" value="2m">
+                <label class="custom-control-label" for="defaultInlines2">2 Months</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample1">
-                <label class="custom-control-label" for="defaultInline2">6 Months</label>
+                <input type="radio" class="custom-control-input" id="defaultInlines3" name="inlineDefaultRadiosExample1" value="6m">
+                <label class="custom-control-label" for="defaultInlines3">6 Months</label>
             </div>
+            <br>
             <button type="submit" class="btn btn-primary" name="form1">Submit</button>
         </form>
+        <br>
         
     </div>
-    
+    <div>
+        <h3>Want to update users' balance? Click below!</h3>
+        <input type="button" name="answer" class="btn btn-primary" value="Show Div" onclick="showDiv()" />    
+        <div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
+    </div>
     
 </div>
-
+<script>
+    function showDiv() {
+        document.getElementById('welcomeDiv').style.display = "block";
+    }      
+</script>
 {% endblock %}
