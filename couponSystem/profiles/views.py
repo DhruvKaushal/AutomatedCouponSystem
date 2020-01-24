@@ -19,25 +19,25 @@ def adminKaPage(request):
             vendor_choice = request.POST["inlineDefaultRadiosExample"]
             date_choice = request.POST["inlineDefaultRadiosExample1"]
             x = employee.objects.all()
-            y = vendor.objects.filter(id = vendor_choice)
-            if date_choice == 1:
-                d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
-            elif date_choice == 2:
-                d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
-            else:
-                d = transaction.objects.filter(vendor_id=y, emp_id = x, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180))    
-            print(d)
+            for i in x:
+                if date_choice == 1:
+                    d.update(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30)))
+                elif date_choice == 2:
+                    d.update(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60)))
+                else:
+                    d.update(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180)))    
             return render(request, 'profiles/adminKaLogin.html', {'model':d})        
 
 
         if 'form2' in request.POST:
             amount = request.POST["amt"]
             x = employee.objects.all()
+            y = vendor.objects.get(id=100)
             for i in x:
                 i.balance = i.balance + int(amount)
                 i.save()
                 print(i.id)
-                transaction.objects.create(emp_id=i,debit=0,credit=amount)
+                transaction.objects.create(vendor_id=y,emp_id=i,debit=0,credit=amount)
 
             return render(request, 'profiles/adminKaLogin.html')
 
