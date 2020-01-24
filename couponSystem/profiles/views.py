@@ -19,13 +19,17 @@ def adminKaPage(request):
             vendor_choice = request.POST["inlineDefaultRadiosExample"]
             date_choice = request.POST["inlineDefaultRadiosExample1"]
             x = employee.objects.all()
+            count=0
             for i in x:
                 if date_choice == 1:
-                    d.update(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30)))
+                    d[count]=transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
+                    count+=1
                 elif date_choice == 2:
-                    d.update(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60)))
+                    d[count]=transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
+                    count+=1
                 else:
-                    d.update(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180)))    
+                    d[count]=transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180))
+                    count+=1
             return render(request, 'profiles/adminKaLogin.html', {'model':d})        
 
 
