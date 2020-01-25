@@ -15,21 +15,21 @@ from .models import vendor, employee, transaction
 def adminKaPage(request):
     if request.method=="POST":
         if 'form1' in request.POST:
-            d={}
+            d=[]
             vendor_choice = request.POST["inlineDefaultRadiosExample"]
             date_choice = request.POST["inlineDefaultRadiosExample1"]
             x = employee.objects.all()
             count=0
             for i in x:
                 if date_choice == 1:
-                    d[count]=transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30))
+                    d.append(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=30)))
                     count+=1
                 elif date_choice == 2:
-                    d[count]=transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60))
+                    d.append(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=60)))
                     count+=1
                 else:
-                    d[count]=transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180))
-                    count+=1
+                    d.append(transaction.objects.filter(vendor_id=vendor_choice, emp_id = i.id, timestamp__gte = datetime.date.today() - datetime.timedelta(days=180)))
+                    count+=1    
             return render(request, 'profiles/adminKaLogin.html', {'model':d})        
 
 

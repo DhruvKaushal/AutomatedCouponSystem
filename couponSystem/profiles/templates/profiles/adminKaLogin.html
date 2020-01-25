@@ -50,13 +50,15 @@
                 </thead>
                 <tbody>
                 {% for i in model %}
+                    {% for j in i %}
                     <tr>
-                        <td style="text-align: center;">{{ i.vendor_id.id }}</td>
-                        <td style="text-align: center;">{{ i.emp_id.id }}</td>
-                        <td style="text-align: center;">{{ i.debit }}</td>
-                        <td style="text-align: center;">{{ i.credit }}</td>
-                        <td style="text-align: center;">{{ i.timestamp }}</td>
+                        <td style="text-align: center;">{{ j.vendor_id.id }}</td>
+                        <td style="text-align: center;">{{ j.emp_id.id }}</td>
+                        <td style="text-align: center;">{{ j.debit }}</td>
+                        <td style="text-align: center;">{{ j.credit }}</td>
+                        <td style="text-align: center;">{{ j.timestamp }}</td>
                     </tr>
+                    {% endfor %}
                 {% endfor %}
                 </tbody>
             </table>
