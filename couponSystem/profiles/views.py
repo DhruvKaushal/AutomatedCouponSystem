@@ -16,8 +16,8 @@ def adminKaPage(request):
     if request.method=="POST":
         if 'form1' in request.POST:
             d=[]
-            vendor_choice = request.POST["inlineDefaultRadiosExample"]
-            date_choice = request.POST["inlineDefaultRadiosExample1"]
+            vendor_choice = request.POST.get("inlineDefaultRadiosExample")
+            date_choice = request.POST.get("inlineDefaultRadiosExample1")
             x = employee.objects.all()
             count=0
             for i in x:
@@ -34,7 +34,7 @@ def adminKaPage(request):
 
 
         if 'form2' in request.POST:
-            amount = request.POST["amt"]
+            amount = request.POST.get("amt")
             x = employee.objects.all()
             y = vendor.objects.get(id=100)
             for i in x:
@@ -50,8 +50,8 @@ def adminKaPage(request):
 def updatingBalance(request):
     if request.method=="POST":
         if 'form1' in request.POST:
-            ven_id = request.POST["groupOfDefaultRadios"]
-            amount = request.POST["amt"]
+            ven_id = request.POST.get("groupOfDefaultRadios")
+            amount = request.POST.get("amt")
             x = employee.objects.get(name = request.user)
             x.balance = x.balance - int(amount)
             x.save()

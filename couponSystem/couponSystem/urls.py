@@ -25,4 +25,4 @@ urlpatterns = [
     path('thanks/', views.ThanksPage.as_view(), name="thanks"),
     path('accounts/', include(("accounts.urls"), namespace="accounts")),
     path('profiles/', include(("profiles.urls"), namespace="profiles")),
-]
+] 
