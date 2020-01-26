@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
-
-    <br>
-    <h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;">Welcome to your home page, {{ user.username }}!</h1>
-    <br>
-<div class="container" style="text-align: center; display: inline-block; width:75%; background-color: #ede4d5; border-radius: 10px;margin:auto; align-self: center;" >
+<br>
+<h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;background-color: #ede8e8">Welcome to your home page, {{ user.username }}!</h1>
+<br>
+<div class="container" style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95;width: 60%;">
     <br>
     {% if model %}
         <h3>Balance amount is {{ model.balance }}</h3>
@@ -15,42 +14,43 @@
     
     <form method="POST" action="/profiles/userLogin/">
         <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios" value="1">
-              <label class="custom-control-label" for="defaultGroupExample1">Vendor 1</label>
-            </div>
+            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios" value="1">
+            <label class="custom-control-label" for="defaultGroupExample1">Vendor 1</label>
+        </div>
 
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" value="2">
-              <label class="custom-control-label" for="defaultGroupExample2">Vendor 2</label>
-            </div> 
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" value="2">
+            <label class="custom-control-label" for="defaultGroupExample2">Vendor 2</label>
+        </div> 
         <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount"style="width: 25%;margin: 0 auto">
-        <br>
-        <button type="submit" class="btn btn-primary" name="form1">Submit</button>
+        
+        <button type="submit" class="btn btn-primary" style="margin: 5px;" name="form1">Submit</button>
+        
         <br>     
     </form> 
 </div>
 <br>
-<br>
-<div style="text-align: center; display: inline-block; width:75%; background-color: #ede4d5; border-radius: 10px;margin:auto; align-self: center;">
+
+<div style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95; width: 75%;">
     <br>
     <h3>Want to see your transactions? Choose from options below!</h3>
     <form method="POST" action="/profiles/userLogin/">
-        <div class="custom-control custom-radio">
+        <div class="custom-control custom-radio" style="margin: 1px;">
             <input type="radio" class="custom-control-input" id="defaultGroupExamples1" name="groupOfDefaultRadios1" value="1">
             <label class="custom-control-label" for="defaultGroupExamples1">1 month</label>
         </div>
 
-        <div class="custom-control custom-radio">
+        <div class="custom-control custom-radio" style="margin: 1px;">
             <input type="radio" class="custom-control-input" id="defaultGroupExamples2" name="groupOfDefaultRadios1" value="2">
             <label class="custom-control-label" for="defaultGroupExamples2">2 months</label>
         </div> 
-        <div class="custom-control custom-radio">
+        <div class="custom-control custom-radio" style="margin: 1px;">
             <input type="radio" class="custom-control-input" id="defaultGroupExamples3" name="groupOfDefaultRadios1" value="3">
             <label class="custom-control-label" for="defaultGroupExamples3">6 months</label>
         </div> 
-        <button type="submit" class="btn btn-info" name="form2">Get records</button>
+        <button type="submit" class="btn btn-primary" name="form2">Get records</button>
     {% if model %}
-    <table>
+    <table style="margin: auto; text-align: center;">
         <thead>
             <tr>
                 <th style = "padding: 20px;">Vendor ID</th>
@@ -78,5 +78,4 @@
     </form>   
     
 </div>
-
 {% endblock %}

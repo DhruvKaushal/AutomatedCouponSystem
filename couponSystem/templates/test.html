@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <h1>You are now logged in!</h1>
+    <h1 style="color: #ede8e8;">You are now logged in!</h1>
     {% if user.username == "Dhruv" %}   
       <h2><a href="{% url 'profiles:adminHome'%}">Go to Home Page</a></h2>
     {% else %}

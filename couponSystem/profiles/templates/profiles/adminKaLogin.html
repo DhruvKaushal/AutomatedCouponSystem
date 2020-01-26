@@ -3,10 +3,11 @@
 
 {% block content %}
 
-<div class="container">
-    <h1>Welcome to your page, Admin</h1>
+<div class="container" style="margin: auto; text-align: center;">
     <br>
-    <div> 
+    <h1  style="background-color: #ede8e8;border-radius: 10px; opacity: 0.95;" > WELCOME TO YOUR PAGE, ADMIN!</h1>
+    <br>
+    <div  style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95;"> 
         <h2>Check the boxes below to display records!</h2>
         <form method="POST" action="/profiles/adminKaLogin/">
             <div class="custom-control custom-radio custom-control-inline">
@@ -36,9 +37,10 @@
                 <label class="custom-control-label" for="defaultInlines3">6 Months</label>
             </div>
             <br>
+            <br>
             <button type="submit" class="btn btn-primary" name="form1">Submit</button>
             {% if model %}
-            <table>
+            <table style="margin: auto; text-align: center;">
                 <thead>
                     <tr>
                         <th style = "padding: 20px;">Vendor ID</th>
@@ -70,23 +72,20 @@
         <br>
         
     </div>
-    <div>
+    <br>
+    <div style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px; opacity: 0.95;">
         <h3>Want to update users' balance? Click below!</h3>
         <input type="button" name="answer" class="btn btn-primary" value="Click here!" onclick="showDiv()"/>
         <br>    
         <div id="welcomeDiv"  style="display:none;" class="answer_list" >
             <form method="POST" action="/profiles/adminKaLogin/">
-              <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount"style="width: 25%;margin: 0 auto">
-              <br>
-              <button type="submit" class="btn btn-primary" name="form2">Submit</button>
+                <input type="" class="form-control" id="amount1" name="amt" aria-describedby="emailHelp" placeholder="Enter amount"style="width: 25%;margin: 0 auto">
+                <br>
+                <button type="submit" class="btn btn-primary" name="form2">Submit</button>
+                <p>
             </form>
         </div>
     </div>
     
 </div>
-<script>
-    function showDiv() {
-        document.getElementById('welcomeDiv').style.display = "block";
-    }      
-</script>
 {% endblock %}
