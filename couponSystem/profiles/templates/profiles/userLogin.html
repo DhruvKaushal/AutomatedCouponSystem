@@ -6,7 +6,7 @@
 <br>
 <h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;background-color: #ede8e8">Welcome to your home page, {{ user.username }}!</h1>
 <br>
-<div class="container" style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95;width: 60%;">
+<div class="container boxes" style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95;width: 60%;">
     <br>
     {% if model %}
         <h3>Balance amount is {{ model.balance }}</h3>
@@ -33,7 +33,7 @@
 </div>
 <br>
 
-<div style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95; width: 75%;">
+<div class="boxes" style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95; width: 75%;">
     <br>
     <h3>Want to see your transactions? Choose from options below!</h3>
     <form method="POST" action="/profiles/userLogin/">
