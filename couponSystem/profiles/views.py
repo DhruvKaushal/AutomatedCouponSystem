@@ -59,7 +59,7 @@ def updatingBalance(request):
             w = employee.objects.get(id=x.id)
             transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
             y = employee.objects.get(name = request.user)
-            return render(request, 'profiles/userLogin.html', {'model':y})
+            return render(request, 'profiles/userLogin.html', {'model':y, 'balance':y.balance})
 
         if 'form2' in request.POST:
             d = {}
