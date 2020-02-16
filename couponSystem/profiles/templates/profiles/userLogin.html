@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
-
-<div class="container">
+<form action="/profiles/userLogin/" method="POST">
+    <button  class="material-icons floating-btnz" name="form0" onClick='showMessage()'></button>
+</form>
+<div class="container"> 
 <br>
 <h1 style="margin: auto; text-align:center; border-radius: 2px; border: 2px dotted black; padding: 20px;background-color: #ede8e8">Welcome to your page, {{ user.username }}!</h1>
 <br>
+
 <div class="container boxes" style="margin: auto; text-align: center;background-color: #ede8e8;border-radius: 10px;opacity: 0.95;width: 60%;">
     <br>
-    {% if balance %}
-        <h3>Balance amount is {{ balance }}</h3>
-    {% endif %}
-    <h3>Select vendor to pay!</h3>
-    <br>
-    
+    <!-- {% if model %}
+        <h3>Balance amount is {{ model.balance }}</h3>
+    {% endif %} -->
+        
     <form method="POST" action="/profiles/userLogin/">
         <div class="custom-control custom-radio">
             <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios" value="1">
@@ -81,4 +82,37 @@
     
 </div>
 </div>
+<style>
+    .floating-btnz{
+        width: 80px;
+        height: 80px;
+        background: #2a97b5;
+        display: flex;
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 40px;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0,0,0, 0.25);
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        transition:  0.25s ;
+        
+        outline: blue;
+        border: none;
+        cursor: pointer;
+    }
+    .floating-btnz:active{
+        background: #185b6e;
+    }
+    
+</style>
+<script>
+    function showMessage(){
+        alert("Your balance is " + {{ balance }} );
+    }
+</script>
 {% endblock %}
+

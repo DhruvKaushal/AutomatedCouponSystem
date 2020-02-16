@@ -49,6 +49,11 @@ def adminKaPage(request):
 
 def updatingBalance(request):
     if request.method=="POST":
+        if 'form0' in request.POST:
+            x = employee.objects.get(name = request.user)
+            y = x.balance
+            return render(request, 'profiles/userLogin.html', {'balance': y})
+
         if 'form1' in request.POST:
             ven_id = request.POST.get("groupOfDefaultRadios")
             amount = request.POST.get("amt")
@@ -59,7 +64,7 @@ def updatingBalance(request):
             w = employee.objects.get(id=x.id)
             transaction.objects.create(vendor_id = v, emp_id=w,debit=amount,credit=0)
             y = employee.objects.get(name = request.user)
-            return render(request, 'profiles/userLogin.html', {'model':y, 'balance':y.balance})
+            return render(request, 'profiles/userLogin.html')
 
         if 'form2' in request.POST:
             d = {}
